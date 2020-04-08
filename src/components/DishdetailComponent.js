@@ -12,56 +12,54 @@ class DishDetail extends Component {
     }
     
     renderComments(dish) {
-        if(dish != null) {
-            return(
-                dish.comments.map((comment) => {
+        return( dish && (
+            <>
+                <h4>Comments</h4>
+                <ul className = "list-unstyled">
+                {dish.comments.map((comment, i) => {
                     const formatted_date = new Intl.DateTimeFormat("en-US", {
                         year: "numeric",
                         month: "short",
                         day: "2-digit"
                     }).format(new Date(comment.date));
+                    
                     return(
-                        <div>
+                        <div key={i}>
                             <li>{comment.comment}</li>
                             <br></br>
-                            <li>-- {comment.author} , {formatted_date}</li>
+                            <li>{`-- ${comment.author} , ${formatted_date}`}</li>
                             <br></br>
                         </div>
                     );
-                })
-            );
-        } else {
-            return(
-                <div></div>
-            );
-        }
+                })}
+                </ul>
+            </>
+        ));
     }
 
     renderDish(dish) {
-        if(dish != null) {
-            return(
-                <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        } else {
-            return(
-                <div></div>
-            );
-        }
+        /*return dish &&
+            <Card>
+                <CardImg width="100%" src={dish.image} alt={dish.name} />
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                </CardBody>
+            </Card>;*/
+        return dish != null ?
+            <Card>
+                <CardImg width="100%" src={dish.image} alt={dish.name} />
+                <CardBody>
+                    <CardTitle>{dish.name}</CardTitle>
+                    <CardText>{dish.description}</CardText>
+                </CardBody>
+            </Card>
+        :
+            null
+        ;
     }
 
     render() {
-        var comments_title;
-        if(this.props.dish != null) {
-            comments_title = 'Comments';
-        } else {
-            comments_title = '';
-        }
         return(
             <div className="container">
                 <div className="row">
@@ -69,10 +67,8 @@ class DishDetail extends Component {
                         {this.renderDish(this.props.dish)}
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <h4>{comments_title}</h4>
-                        <ul class = "list-unstyled">
+                        {/*!!this.props.dish ? <h4>Comments</h4> : null*/}
                             {this.renderComments(this.props.dish)}
-                        </ul>
                     </div>
                 </div>
             </div>
