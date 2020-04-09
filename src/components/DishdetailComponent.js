@@ -29,14 +29,14 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
     function RenderDish({dish}) {
         /*return dish &&
-            <Card>
+            (<Card>
                 <CardImg width="100%" src={dish.image} alt={dish.name} />
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>
                 </CardBody>
-            </Card>;*/
-        return dish != null ?
+            </Card>);*/
+        return (dish != null ?
             <Card>
                 <CardImg width="100%" src={dish.image} alt={dish.name} />
                 <CardBody>
@@ -45,7 +45,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
                 </CardBody>
             </Card>
         :
-            null
+            null)
         ;
     }
 
