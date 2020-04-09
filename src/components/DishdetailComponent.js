@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
 
     constructor(props) {
         super(props);
+        console.log('DishdetailComponent constructor invoked');
     }
 
     componentDidMount() {
-        
+        console.log('DishdetailComponent componentDidMount invoked');
     }
-    
+
+    componentDidUpdate() {
+        console.log('DishdetailComponent componentDidUpdate invoked');
+    }
+
     renderComments(dish) {
         return( dish && (
             <>
@@ -60,6 +65,7 @@ class DishDetail extends Component {
     }
 
     render() {
+        console.log('DishdetailComponent render executed');
         return(
             <div className="container">
                 <div className="row">

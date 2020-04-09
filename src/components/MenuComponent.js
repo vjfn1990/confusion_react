@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 class Menu extends Component {
 
     constructor(props) {
         super(props);
-        console.log('MenuComponent constructor executed');
+        console.log('MenuComponent constructor invoked');
     }
 
     componentDidMount() {
-        console.log('MenuComponent componentDidMount executed');
+        console.log('MenuComponent componentDidMount invoked');
+    }
+
+    componentDidUpdate() {
+        console.log('MenuComponent componentDidUpdate invoked');
     }
 
     render() {
@@ -26,7 +30,7 @@ class Menu extends Component {
                 </div>
             );
         });
-        console.log('MenuComponent render executed');
+        console.log('MenuComponent render invoked');
         return(
             <div className="container">
                 <div className="row">
