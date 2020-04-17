@@ -21,11 +21,11 @@ class Contact extends Component {
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
     }
 
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.type  === "checkbox" ? target.checked : target.value;
         const name = target.name;
@@ -127,7 +127,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Input type="text" id="firstname" name="firstname" placeholder="First Name" value={this.state.firstname} 
                                     valid={errors.firstname === ''} invalid={errors.firstname !== ''}
-                                    onBlur={this.handleBlur('firstname')} onChange={this.handleInputChange} />
+                                    onBlur={this.handleBlur('firstname')} onChange={(e)=>this.handleInputChange(e)} />
                                     <FormFeedback>{errors.firstname}</FormFeedback>
                                 </Col>
                             </FormGroup>
