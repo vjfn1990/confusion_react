@@ -14,6 +14,12 @@ class Header extends Component {
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    handleInputChange = (event) => {
+        this.username.value = "victor";
+        alert('username: ' + this.username.value);
     }
 
     toggleNav() {
@@ -92,7 +98,7 @@ class Header extends Component {
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" innerRef={(input) => this.username = input}/>
+                                <Input type="text" id="username" name="username" innerRef={(input) => this.username = input} onChange={this.handleInputChange}/>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
