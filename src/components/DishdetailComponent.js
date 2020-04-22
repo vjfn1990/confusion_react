@@ -22,8 +22,7 @@ class CommentForm extends Component {
         });
     }
     handleSubmit(values) {
-        console.log("Submitted information: " + JSON.stringify(values));
-        alert("Submitted information: " + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
@@ -86,7 +85,7 @@ class CommentForm extends Component {
     }
 }
 
-    function RenderComments({comments}) {
+    function RenderComments({comments, addComment, dishId }) {
         return( comments && (
             <>
                 <h4>Comments</h4>
@@ -107,7 +106,7 @@ class CommentForm extends Component {
                     );
                 })}
                 </ul>
-                <CommentForm />
+                <CommentForm addComment={addComment} dishId={dishId} />
             </>
         ));
     }
@@ -154,7 +153,7 @@ class CommentForm extends Component {
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         {/*!!this.props.dish ? <h4>Comments</h4> : null*/}
-                        <RenderComments comments={props.comments} />
+                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
                     </div>
                 </div>
             </div>
