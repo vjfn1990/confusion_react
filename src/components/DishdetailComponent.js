@@ -25,9 +25,11 @@ class CommentForm extends Component {
         });
     }
     handleSubmit(values) {
-        this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
-        this.setState({
-            isModalOpen: !this.state.isModalOpen
+        this.props.postComment(this.props.dishId, values.rating, values.name, values.comment)
+        .then(response => {
+            this.setState({
+                isModalOpen: !this.state.isModalOpen
+            })
         });
     }
     render() {
